@@ -1,4 +1,4 @@
-export const PersonalData = () => {
+export const PersonalDataForm = () => {
 	return (
 		<div>
 			<form action="submit">
