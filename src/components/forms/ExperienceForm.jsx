@@ -1,4 +1,4 @@
-export const ExperienceForm = ({ expType, organization }) => {
+export const ExperienceForm = ({ expType, organization, onRemoveForm }) => {
 	const description = `Write a few sentences about your experience at this organization...`;
 	return (
 		<form>
@@ -27,6 +27,13 @@ export const ExperienceForm = ({ expType, organization }) => {
 						id="description"
 						className="w-full placeholder:text-gray-500"
 						placeholder={description}></textarea>
+				</div>
+				<div className="flex">
+					<button
+						className="cursor-pointer border px-2 ml-auto"
+						onClick={onRemoveForm}>
+						- Remove
+					</button>
 				</div>
 			</div>
 		</form>
