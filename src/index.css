@@ -4,3 +4,24 @@
 	background-color: rgb(27, 29, 39);
 	color: rgb(215, 215, 215);
 }
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.2rem;
+}
+
+/* Global form styles */
+input {
+	padding: 0px 5px;
+	margin: 0px 5px;
+}
+
+input,
+textarea {
+	background-color: rgba(215, 215, 215, 0.04);
+	border-radius: 5px;
+	border: 1px solid rgba(215, 215, 215, 0.218);
+}
