@@ -1,20 +1,32 @@
 export const GeneralInfoFieldset = () => {
 	return (
-		<fieldset className="flex flex-col gap-2">
-			<legend>General Info</legend>
-			<input type="text" name="full-name" placeholder="Full Name" />
-			<input type="text" name="email-address" placeholder="example@mail.com" />
-			<input type="text" name="phone-number" placeholder="+00 123 456 798" />
-			<input type="text" name="city-country" placeholder="City, Country" />
-			<section>
-				<label htmlFor="summary" className="block mb-2">
-					Professional Summary
+		<fieldset>
+			<h2 className="mb-2">General Info</h2>
+			<div className="flex flex-col gap-2 p-1.5 border">
+				<label>
+					Full name
+					<input type="text" name="full-name" />
 				</label>
-				<textarea
-					name="summary"
-					className="w-full placeholder:text-gray-500"
-					placeholder="Write a few sentences about yourself..."></textarea>
-			</section>
+				<label>
+					Email address
+					<input type="email" name="email-address" />
+				</label>
+				<label>
+					Phone number
+					<input type="text" name="phone-number" />
+				</label>
+				<label>
+					City
+					<input type="text" name="city-country" />
+				</label>
+				<label htmlFor="summary" className="mb-2">
+					Professional Summary
+					<textarea
+						name="summary"
+						className="w-full placeholder:text-gray-500"
+						placeholder="Write a few sentences about yourself..."></textarea>
+				</label>
+			</div>
 		</fieldset>
 	);
 };
