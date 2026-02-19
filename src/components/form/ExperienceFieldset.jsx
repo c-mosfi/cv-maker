@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import { ExperienceEntry } from './ExperienceEntry';
 
-export const ExperienceFieldset = ({ type }) => {
-	let [entries, setEntries] = useState([]); // to keep count and map them with uniqueID
+export const ExperienceFieldset = ({ type, entries, setEntries }) => {
+	// state for entries lives in CvForm (parent)
+	let [entriesIDs, setEntriesIDs] = useState([]); // just entries IDs
+	let [singleEntry, setSingleEntry] = useState({}); // state for singleEntry inputs, used on ExperienceEntry child component
 
 	function addEntry() {
-		const uniqueID = crypto.randomUUID();
-		setEntries([...entries, uniqueID]);
+		const newID = crypto.randomUUID();
+		setEntriesIDs([...entriesIDs, newID]);
+		setEntries([...entries, singleEntry]);
 	}
 
-	function removeEntry(idToRemove) {
-		const entriesToKeep = entries.filter((id) => id !== idToRemove);
+	function deleteEntry(idToDelete) {
+		const entriesIDsToKeep = entriesIDs.filter((id) => id !== idToDelete);
+		const entriesToKeep = entries.filter((e) => e.id !== idToDelete);
+		setEntriesIDs(entriesIDsToKeep);
 		setEntries(entriesToKeep);
 	}
 
@@ -31,11 +36,14 @@ export const ExperienceFieldset = ({ type }) => {
 			</section>
 
 			{/* Return entries */}
-			{entries.map((id) => (
+			{entriesIDs.map((id) => (
 				<ExperienceEntry
 					key={id}
+					entryId={id}
 					type={type}
-					onDelete={() => removeEntry(id)}
+					entry={singleEntry}
+					setEntry={setSingleEntry}
+					onDelete={() => deleteEntry(id)}
 				/>
 			))}
 		</fieldset>
